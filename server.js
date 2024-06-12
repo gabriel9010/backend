@@ -2,11 +2,13 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
+const cors = require('cors');  // Importa il middleware CORS
 const app = express();
 const port = 3000;
 
 // Middleware per il parsing del corpo delle richieste JSON
 app.use(bodyParser.json());
+app.use(cors());  // Usa il middleware CORS
 
 // Connetti al database SQLite
 let db = new sqlite3.Database('./app.db', (err) => {
